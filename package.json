@@ -4,6 +4,7 @@
   "description": "ahj.10.2.posts_with_comments",
   "main": "webpack.config.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "forever -c babel-node main.js",
     "serve": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
