@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: transparent;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Apple Symbols", serif;
+    min-height: 100%;
+    padding: 30px 0;
+}
+
+.posts {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+@keyframes loader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg);}
+}
+.posts__list {
+    position: relative;
+}
+.posts__list--load:after {
+    content: '';
+    display: block;
+    position: relative;
+    margin: 40px 0;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    border: 3px solid #000000;
+    border-radius: 50%;
+    border-bottom: 3px solid transparent;
+    animation: loader 1s linear infinite;
+}
+.posts__item {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #000000;
+}
+.posts__item:last-child {
+    border-bottom: 1px solid transparent;
+}
+.posts__head{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.posts__head-image{
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #dddddd;
+}
+.posts__head-name {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.posts__head-date {
+    font-size: 18px;
+}
+.posts__item-image {
+    height: 300px;
+    background-size: cover;
+    margin-bottom: 20px;
+    background-color: #dddddd;
+}
+.posts__wrapper {
+    text-align: center;
+}
+.posts__show-item {
+    padding: 5px 30px;
+    border: 0;
+    font-size: 15px;
+    cursor: pointer;
+}
+.posts__show-item:hover {
+    color: #026aa7;
+}
+
+.comments__title {
+    margin-bottom: 15px;
+}
+.comments__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+.comments__avatar {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-color: #dddddd;
+}
+.comments__wrapper {
+    flex-grow: 1;
+}
+.comments__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
