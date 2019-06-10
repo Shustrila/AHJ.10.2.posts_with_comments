@@ -52,7 +52,7 @@ router.get('/posts/:id/comments/latest' , async (ctx, next) => {
     console.log(authorID);
 
     if (authorID.indexOf(id) >= 0) {
-        const numberComments = Number(Math.floor(Math.random() * 3) + 1 );
+        const numberComments = Number(Math.floor(Math.random() * 4));
 
         data.status = "ok";
         data.data = [];
