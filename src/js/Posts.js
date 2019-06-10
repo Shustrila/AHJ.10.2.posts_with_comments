@@ -1,6 +1,6 @@
 import { ajax } from 'rxjs/ajax';
-import { map, switchMap, catchError } from 'rxjs/operators';
-import { of, range, Observer } from 'rxjs'
+import { map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs'
 
 class Posts {
     constructor() {
@@ -27,15 +27,19 @@ class Posts {
 
     _getPosts(){
         this.list.classList.add('posts__list--load');
-        this.showAdd.style.display = 'node';
 
         ajax.getJSON(`${this._dmain}/posts/latest`).pipe(
             map(res => (res.status === 'ok') ? res.messages : new Error('posts/latest')),
             catchError(err => of(err))
         ).subscribe(
             posts => {
-                this._getComments(posts[this.show]);
-                if(this.show < posts.length) this.show++;
+                if(this.show < posts.length) {
+                    this._getComments(posts[this.show]);
+                    this.show++;
+                } else {
+                    this.showAdd.style.display = 'none';
+                    this.list.classList.remove('posts__list--load');
+                }
             },
             err => new Error(err)
         );

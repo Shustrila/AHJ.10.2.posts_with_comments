@@ -56,6 +56,7 @@ body {
 }
 .posts__item:last-child {
     border-bottom: 1px solid transparent;
+    margin-bottom: 0;
 }
 .posts__head{
     display: flex;
