@@ -17,6 +17,7 @@ app.use(koaCors({
 app.use(koaBody({ urlencoded: true }));
 
 const authorID = [];
+const falseData = faker;
 
 router.get('/posts/latest' , async (ctx, next) => {
     let data = {};
@@ -26,14 +27,14 @@ router.get('/posts/latest' , async (ctx, next) => {
 
     for (let i = 0; i < 10; i++) {
         let push = {};
-        const date = moment(faker.date.past());
+        const date = moment(falseData.date.past());
 
-        push['id'] = faker.random.uuid();
-        push['author_id'] = faker.random.uuid();
-        push['title'] = faker.name.title();
-        push['author'] = faker.finance.accountName();
-        push['avatar'] = faker.image.avatar();
-        push['image'] = faker.random.image();
+        push['id'] = falseData.random.uuid();
+        push['author_id'] = falseData.random.uuid();
+        push['title'] = falseData.name.title();
+        push['author'] = falseData.finance.accountName();
+        push['avatar'] = falseData.image.avatar();
+        push['image'] = falseData.random.image();
         push['created'] = date.format('hh:mm DD.MM.YYYY');
 
         authorID.push(push['id']);
@@ -49,8 +50,6 @@ router.get('/posts/:id/comments/latest' , async (ctx, next) => {
     const id = String(ctx.params.id);
     let data = {};
 
-    console.log(authorID);
-
     if (authorID.indexOf(id) >= 0) {
         const numberComments = Number(Math.floor(Math.random() * 4));
 
@@ -59,14 +58,14 @@ router.get('/posts/:id/comments/latest' , async (ctx, next) => {
 
         for (let i = 0; i < numberComments; i++) {
             let push = {};
-            const date = moment(faker.date.past());
+            const date = moment(falseData.date.past());
 
-            push['id'] = faker.random.uuid();
-            push['post_id'] = faker.random.uuid();
-            push['author_id'] = faker.random.uuid();
-            push['author'] = faker.finance.accountName();
-            push['avatar'] = faker.image.avatar();
-            push['image'] = faker.random.image();
+            push['id'] = falseData.random.uuid();
+            push['post_id'] = falseData.random.uuid();
+            push['author_id'] = falseData.random.uuid();
+            push['author'] = falseData.finance.accountName();
+            push['avatar'] = falseData.image.avatar();
+            push['content'] = falseData.random.words();
             push['created'] = date.format('hh:mm DD.MM.YYYY');
 
             data.data.push(push);
